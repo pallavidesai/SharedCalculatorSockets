@@ -23,6 +23,7 @@ namespace SharedCalculatorSockets
                 .UseConfiguration(config)
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls(urls: "http://localhost:30387")
                 .Build();
 
             host.Run();
@@ -40,7 +41,7 @@ namespace SharedCalculatorSockets
         //        .UseKestrel()
         //        .UseContentRoot(Directory.GetCurrentDirectory())
 
-        //        .UseUrls(urls: "https://my-web-calculator.herokuapp.com")
+        //        .UseUrls(urls: " http://localhost:30387")
 
         //        .Build();
 

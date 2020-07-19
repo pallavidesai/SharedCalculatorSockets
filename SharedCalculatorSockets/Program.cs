@@ -23,7 +23,7 @@ namespace SharedCalculatorSockets
                 .UseConfiguration(config)
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls(urls: "http://localhost:30387")
+                .UseUrls(urls: "http://localhost:30388")
                 .Build();
 
             host.Run();

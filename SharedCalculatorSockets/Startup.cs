@@ -30,7 +30,7 @@ namespace SharedCalculatorSockets
             }
 
             app.UseWebSockets();
-            app.MapSockets("/wss", serviceprovider.GetService<WebSocketMessageHandlers>());
+            app.MapSockets("/ws", serviceprovider.GetService<WebSocketMessageHandlers>());
             app.UseStaticFiles();
             Console.WriteLine("I am in startup - Configure");
 

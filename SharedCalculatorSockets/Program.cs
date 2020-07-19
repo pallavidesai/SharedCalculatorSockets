@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 namespace SharedCalculatorSockets
 {
@@ -14,15 +15,16 @@ namespace SharedCalculatorSockets
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Run();
-        }
-
-        public static IWebHost CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            var config = new ConfigurationBuilder().AddCommandLine(args).Build();
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseConfiguration(config)
+                .UseIISIntegration()
                 .UseStartup<Startup>()
-
-                .UseUrls(urls: "http://localhost:10000")
-
                 .Build();
+
+            host.Run();
+        }
     }
 }

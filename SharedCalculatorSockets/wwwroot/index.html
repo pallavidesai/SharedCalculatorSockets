@@ -11,7 +11,9 @@
     <button id="sendbutton">Send</button>
     <ul id="message"><li></li></ul>
 <script>
-    var uri = "ws://localhost:14352/ws";
+    var port = process.env.PORT;
+    var uri = "ws://localhost:" + port + "/ws";
+    alert(uri);
     socket = new WebSocket(uri);
 
     function connect() {

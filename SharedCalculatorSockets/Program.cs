@@ -13,36 +13,36 @@ namespace SharedCalculatorSockets
 {
     public class Program
     {
-        //public static void Main(string[] args)
-        //{
-        //    Console.WriteLine("I am in main now");
-        //    var config = new ConfigurationBuilder().AddCommandLine(args).Build();
-        //    var host = new WebHostBuilder()
-        //        .UseKestrel()
-        //        .UseContentRoot(Directory.GetCurrentDirectory())
-        //        .UseConfiguration(config)
-        //        .UseIISIntegration()
-        //        .UseStartup<Startup>()
-        //        .Build();
-
-        //    host.Run();
-        //}
-
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Run();
-        }
-
-        public static IWebHost CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-
+            Console.WriteLine("I am in main now");
+            var config = new ConfigurationBuilder().AddCommandLine(args).Build();
+            var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-
-                .UseUrls(urls: "https://my-web-calculator.herokuapp.com")
-
+                .UseConfiguration(config)
+                .UseIISIntegration()
+                .UseStartup<Startup>()
                 .Build();
+
+            host.Run();
+        }
+
+        //public static void Main(string[] args)
+        //{
+        //    CreateWebHostBuilder(args).Run();
+        //}
+
+        //public static IWebHost CreateWebHostBuilder(string[] args) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //        .UseStartup<Startup>()
+
+        //        .UseKestrel()
+        //        .UseContentRoot(Directory.GetCurrentDirectory())
+
+        //        .UseUrls(urls: "https://my-web-calculator.herokuapp.com")
+
+        //        .Build();
 
     }
 }

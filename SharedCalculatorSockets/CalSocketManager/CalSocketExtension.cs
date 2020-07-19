@@ -13,6 +13,7 @@ namespace SharedCalculatorSockets.CalSocketManager
     {
         public static IServiceCollection AddWebSocketManager(this IServiceCollection services)
         {
+            Console.WriteLine("Services are being added now");
             services.AddTransient<ConnectionManager>();
             foreach (var type in Assembly.GetEntryAssembly().ExportedTypes)
             {

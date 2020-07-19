@@ -13,18 +13,36 @@ namespace SharedCalculatorSockets
 {
     public class Program
     {
+        //public static void Main(string[] args)
+        //{
+        //    Console.WriteLine("I am in main now");
+        //    var config = new ConfigurationBuilder().AddCommandLine(args).Build();
+        //    var host = new WebHostBuilder()
+        //        .UseKestrel()
+        //        .UseContentRoot(Directory.GetCurrentDirectory())
+        //        .UseConfiguration(config)
+        //        .UseIISIntegration()
+        //        .UseStartup<Startup>()
+        //        .Build();
+
+        //    host.Run();
+        //}
+
         public static void Main(string[] args)
         {
-            var config = new ConfigurationBuilder().AddCommandLine(args).Build();
-            var host = new WebHostBuilder()
+            CreateWebHostBuilder(args).Run();
+        }
+
+        public static IWebHost CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseConfiguration(config)
-                .UseIISIntegration()
-                .UseStartup<Startup>()
+
+                .UseUrls(urls: "https://my-web-calculator.herokuapp.com")
+
                 .Build();
 
-            host.Run();
-        }
     }
 }

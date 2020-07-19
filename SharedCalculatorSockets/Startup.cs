@@ -18,6 +18,7 @@ namespace SharedCalculatorSockets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddWebSocketManager();
+            Console.WriteLine("I am in startup - ConfigureServices");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,8 +30,9 @@ namespace SharedCalculatorSockets
             }
 
             app.UseWebSockets();
-            app.MapSockets("/ws", serviceprovider.GetService<WebSocketMessageHandlers>());
+            app.MapSockets("/wss", serviceprovider.GetService<WebSocketMessageHandlers>());
             app.UseStaticFiles();
+            Console.WriteLine("I am in startup - Configure");
 
         }
     }
